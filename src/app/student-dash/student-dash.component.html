@@ -1,0 +1,63 @@
+<nav class="navbar navbar-light bg-primary">
+     <div class="container-fluid">
+          <h1 style="color: rgb(236, 236, 227);">SMS</h1>
+          <div class="d-flex flex-row-reverse">
+               <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add Details</button>
+          </div>
+     </div>
+</nav>
+<table class="table mt-5">
+     <thead>
+          <tr>
+               <th scope="col">Student ID</th>
+               <th scope="col">First Name</th>
+               <th scope="col">Last Name</th>
+               <th scope="col">Student Email</th>
+               <th scope="col">Mobile Number</th>
+               <th scope="col">Student Fee</th>
+               <th scope="col">Action</th>
+          </tr>
+     </thead>
+
+     <tbody>
+          <tr>
+               <td>1</td>
+               <td>Atharva</td>
+               <td>Kadam</td>
+               <td>prajwalkadam03@gmail.com</td>
+               <td>7020943079</td>
+               <td>5000</td>
+               <td>
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+               </td>
+          </tr>
+     </tbody>
+</table>
+
+   
+   <!-- Modal -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+           ...
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-primary">Save changes</button>
+         </div>
+       </div>
+     </div>
+   </div>
+   <script type="text/javascript">
+
+   ('#btn').on('click',function(){
+        ('#exampleModal').model('show')
+   });
+
+   </script>
