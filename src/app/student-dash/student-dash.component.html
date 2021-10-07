@@ -2,7 +2,7 @@
 <mat-toolbar color="primary">
      <span>STUDENT DATA MANAGEMENT SYSTEM</span>
      <span class="example-spacer"></span>
-     <button mat-flat-button color="primary"type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Details</button>
+     <button (click)="ClickAddStudent()" mat-flat-button color="primary"type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Details</button>
 </mat-toolbar>
 
   
@@ -20,16 +20,17 @@
      </thead>
 
      <tbody>
-          <tr>
-               <td>1</td>
-               <td>Atharva</td>
-               <td>Kadam</td>
-               <td>prajwalkadam03@gmail.com</td>
-               <td>7020943079</td>
-               <td>5000</td>
+          <tr *ngFor = "let data of studentAll">
+               <td>{{data.id}}</td>
+               <td>{{data.firstName}}</td>
+               <td>{{data.lastName}}</td>
+               <td>{{data.email}}</td>
+               <td>{{data.mobile}}</td>
+               <td>{{data.fees}}</td>
+
                <td>
-                    <button mat-flat-button color="primary">Edit</button>
-                    <button mat-stroked-button color="warn">Warn</button>
+                    <button mat-flat-button color="primary"mat-flat-button color="primary"type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(data)">Edit</button> &nbsp;
+                    <button mat-stroked-button color="warn" (click)="deleteStudent(data)">Delete</button>
 
                </td>
           </tr>
@@ -131,7 +132,9 @@
 <br>
 
 
-     <td><button mat-raised-button (click)=" PostStudentDetails()" color="primary" type="button"variant="contained">Add</button></td>
+     <button mat-raised-button (click)="PostStudentDetails()"*ngIf = "ShowAdd"  color="primary" type="button"variant="contained">Add</button> &nbsp;
+     <button mat-raised-button   (click)="updateStudentDetails()"     *ngIf = "ShowUpdate" color="primary" type="button"variant="contained">Update</button>
+
 
 </div>
    </div>
