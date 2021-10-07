@@ -1,14 +1,14 @@
-<nav class="navbar navbar-light bg-primary">
-     <div class="container-fluid">
-          <h1 style="color: rgb(236, 236, 227);">SMS</h1>
-          <div class="d-flex flex-row-reverse">
-               <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add Details</button>
-          </div>
-     </div>
-</nav>
+
+<mat-toolbar color="primary">
+     <span>STUDENT DATA MANAGEMENT SYSTEM</span>
+     <span class="example-spacer"></span>
+     <button mat-flat-button color="primary"type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Details</button>
+</mat-toolbar>
+
+  
 <table class="table mt-5">
      <thead>
-          <tr>
+          <tr class="table-active">
                <th scope="col">Student ID</th>
                <th scope="col">First Name</th>
                <th scope="col">Last Name</th>
@@ -28,36 +28,113 @@
                <td>7020943079</td>
                <td>5000</td>
                <td>
-                    <button class="btn btn-primary">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
+                    <button mat-flat-button color="primary">Edit</button>
+                    <button mat-stroked-button color="warn">Warn</button>
+
                </td>
           </tr>
      </tbody>
 </table>
 
-   
    <!-- Modal -->
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog">
        <div class="modal-content">
          <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <mat-card-title tm-5>
+               <p>
+                    <mat-card>	
+                    <mat-toolbar color="primary">
+                      <span>STUDENT DETAIL's</span>
+                    </mat-toolbar>
+               </mat-card>
+
+                  
+                  </p>
+           <h1 class="modal-title" id="exampleModalLabel"></h1>
+           </mat-card-title>
            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <div class="modal-body">
-           ...
-         </div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-           <button type="button" class="btn btn-primary">Save changes</button>
-         </div>
-       </div>
-     </div>
+              <h5 style="color: firebrick;">Filds With * are Menditory</h5>
+
+          <mat-card class="example-card">
+
+            <form [formGroup] = "formValue">
+               <table class="example-full-width" cellspacing="0">
+                 <tr>
+                 <td>
+               <div class="mb-3">
+                 <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>First Name*</mat-label>
+                    <input matInput placeholder="Prajwal" formControlName = "firstName"type="text"id="ExampleInputEmail">
+                  </mat-form-field>
+               </div>
+          </td>
+
+          <td>
+               <div class="mb-3">
+                 <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Last Name*</mat-label>
+                    <input matInput  placeholder="Kadam" formControlName = "lastName" id="LASTNAME" >
+                  </mat-form-field>
+               </div>
+          </td>
+          </tr>
+               </table>
+<table class="example-full-width" cellspacing="0">
+                    <tr>
+                    <td>
+                  <div class="mb-3">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Email*</mat-label>
+                         <input matInput placeholder="abc@gmail.com" formControlName = "Email" id="EMAIL"  type="email">
+                       </mat-form-field>
+                  </div>
+             </td>
+       
+             <td> 
+                  <div class="mb-3">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>fees*</mat-label>
+                         <input matInput placeholder="Enter Amount"formControlName = "Fees" id="FEES">
+                       </mat-form-field>
+                  </div>
+             </td>
+          </tr>    
+     </table> 
+
+     <table class="example-full-width" cellspacing="0">
+          <tr>
+          <td>
+        <div class="mb-3">
+          <mat-form-field class="example-full-width" appearance="fill">
+               <mat-label>Address</mat-label>
+               <textarea matInput placeholder="Ex. 100 Main St" formControlName = "Address"></textarea>
+             </mat-form-field>
+         
+        </div>
+   </td>
+   <td>
+        <div class="mb-3">
+          <mat-form-field class="example-full-width" appearance="fill">
+               <mat-label>Mobile*</mat-label>
+               <span matPrefix>+91 &nbsp;</span>
+               <input type="tel" matInput placeholder="555-555-1234" formControlName = "Mobile" id="MOB">
+             </mat-form-field>
+        </div>
+   </td>
+</tr>     
+</table>
+     </form>       
+</mat-card>
+<br>
+
+
+     <td><button mat-raised-button (click)=" PostStudentDetails()" color="primary" type="button"variant="contained">Add</button></td>
+
+</div>
    </div>
-   <script type="text/javascript">
-
-   ('#btn').on('click',function(){
-        ('#exampleModal').model('show')
-   });
-
-   </script>
+         </div>
+     
+   
