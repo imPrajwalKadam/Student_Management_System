@@ -12,17 +12,22 @@ import { StudentDashComponent } from './student-dash/student-dash.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {HttpClientModule} from '@angular/common/http'
+import {MatIconModule} from '@angular/material/icon';
+import { ControlMessageComponent } from './control-message/control-message.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    StudentDashComponent
+    StudentDashComponent,
+    ControlMessageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,MatInputModule,MatButtonModule,MatCardModule,MatToolbarModule,MatTableModule,ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

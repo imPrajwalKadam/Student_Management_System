@@ -1,12 +1,13 @@
-
+<mat-card>
 <mat-toolbar color="primary">
-     <span>STUDENT DATA MANAGEMENT SYSTEM</span>
+     <button mat-flat-button color="primary">STUDENT DATA MANAGEMENT SYSTEM</button>
      <span class="example-spacer"></span>
-     <button (click)="ClickAddStudent()" mat-flat-button color="primary"type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Details</button>
+     <button (click)="ClickAddStudent()" mat-flat-button color="primary" type="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" matTooltip="Tooltip!" matTooltipShowDelay="1000">Add Details</button>
 </mat-toolbar>
-
-  
-<table class="table mt-5">
+</mat-card>
+<mat-card>
+<table class="table mt-1">
      <thead>
           <tr class="table-active">
                <th scope="col">Student ID</th>
@@ -18,126 +19,143 @@
                <th scope="col">Action</th>
           </tr>
      </thead>
-
      <tbody>
-          <tr *ngFor = "let data of studentAll">
+          <tr *ngFor="let data of studentAll">
+
                <td>{{data.id}}</td>
                <td>{{data.firstName}}</td>
                <td>{{data.lastName}}</td>
                <td>{{data.email}}</td>
                <td>{{data.mobile}}</td>
                <td>{{data.fees}}</td>
-
                <td>
-                    <button mat-flat-button color="primary"mat-flat-button color="primary"type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(data)">Edit</button> &nbsp;
-                    <button mat-stroked-button color="warn" (click)="deleteStudent(data)">Delete</button>
+                    <mat-card >
+                         <button mat-flat-button color="primary" mat-flat-button color="primary" type="button"
+                              data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(data)">Edit</button>
+                         &nbsp;
+                         <button mat-fab  color="warn"aria-label="Example icon button with a delete icon" (click)="deleteStudent(data)"><mat-icon>delete</mat-icon></button>
+                    </mat-card>
 
                </td>
           </tr>
      </tbody>
 </table>
-
-   <!-- Modal -->
-   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-          <mat-card-title tm-5>
-               <p>
-                    <mat-card>	
-                    <mat-toolbar color="primary">
-                      <span>STUDENT DETAIL's</span>
-                    </mat-toolbar>
-               </mat-card>
-
-                  
-                  </p>
-           <h1 class="modal-title" id="exampleModalLabel"></h1>
-           </mat-card-title>
-           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-              <h5 style="color: firebrick;">Filds With * are Menditory</h5>
-
-          <mat-card class="example-card">
-
-            <form [formGroup] = "formValue">
-               <table class="example-full-width" cellspacing="0">
-                 <tr>
-                 <td>
-               <div class="mb-3">
-                 <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>First Name*</mat-label>
-                    <input matInput placeholder="Prajwal" formControlName = "firstName"type="text"id="ExampleInputEmail">
-                  </mat-form-field>
-               </div>
-          </td>
-
-          <td>
-               <div class="mb-3">
-                 <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Last Name*</mat-label>
-                    <input matInput  placeholder="Kadam" formControlName = "lastName" id="LASTNAME" >
-                  </mat-form-field>
-               </div>
-          </td>
-          </tr>
-               </table>
-<table class="example-full-width" cellspacing="0">
-                    <tr>
-                    <td>
-                  <div class="mb-3">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Email*</mat-label>
-                         <input matInput placeholder="abc@gmail.com" formControlName = "Email" id="EMAIL"  type="email">
-                       </mat-form-field>
-                  </div>
-             </td>
-       
-             <td> 
-                  <div class="mb-3">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>fees*</mat-label>
-                         <input matInput placeholder="Enter Amount"formControlName = "Fees" id="FEES">
-                       </mat-form-field>
-                  </div>
-             </td>
-          </tr>    
-     </table> 
-
-     <table class="example-full-width" cellspacing="0">
-          <tr>
-          <td>
-        <div class="mb-3">
-          <mat-form-field class="example-full-width" appearance="fill">
-               <mat-label>Address</mat-label>
-               <textarea matInput placeholder="Ex. 100 Main St" formControlName = "Address"></textarea>
-             </mat-form-field>
-         
-        </div>
-   </td>
-   <td>
-        <div class="mb-3">
-          <mat-form-field class="example-full-width" appearance="fill">
-               <mat-label>Mobile*</mat-label>
-               <span matPrefix>+91 &nbsp;</span>
-               <input type="tel" matInput placeholder="555-555-1234" formControlName = "Mobile" id="MOB">
-             </mat-form-field>
-        </div>
-   </td>
-</tr>     
-</table>
-     </form>       
 </mat-card>
-<br>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+          <div class="modal-content">
+               <div class="modal-header">
+                    <mat-card-title tm-5>
+                         <p>
+                              <mat-card>
+                                   <mat-toolbar color="primary">
+                                        <span>STUDENT DETAIL's</span>
+                                   </mat-toolbar>
+                              </mat-card>
 
 
-     <button mat-raised-button (click)="PostStudentDetails()"*ngIf = "ShowAdd"  color="primary" type="button"variant="contained">Add</button> &nbsp;
-     <button mat-raised-button   (click)="updateStudentDetails()"     *ngIf = "ShowUpdate" color="primary" type="button"variant="contained">Update</button>
+                         </p>
+                         <h1 class="modal-title" id="exampleModalLabel"></h1>
+                    </mat-card-title>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                    <h5 style="color: firebrick;">Filds With * are Menditory</h5>
 
+                    <mat-card class="example-card">
 
-</div>
-   </div>
-         </div>
-     
-   
+                         <form [formGroup]="formValue">
+                              <table class="example-full-width" cellspacing="0">
+                                   <tr>
+                                        <td>
+                                             <div class="mb-3">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
+                                                       <mat-label>First Name*</mat-label>
+                                                       <input matInput placeholder="Prajwal" formControlName="firstName"
+                                                            type="text" id="ExampleInputEmail">
+
+                                                  </mat-form-field>
+                                                  <app-control-message [control] = "formValue.get('firstName')"class="text-danger"></app-control-message>
+
+                                             </div>
+                                        </td>
+
+                                        <td>
+                                             <div class="mb-3">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
+                                                       <mat-label>Last Name*</mat-label>
+                                                       <input matInput placeholder="Kadam" formControlName="lastName"
+                                                            id="LASTNAME">
+                                                  </mat-form-field>
+                                                  <app-control-message [control] = "formValue.get('lastName')"class="text-danger"></app-control-message>
+                                             </div>
+                                        </td>
+                                   </tr>
+                              </table>
+                              <table class="example-full-width" cellspacing="0">
+                                   <tr>
+                                        <td>
+                                             <div class="mb-3">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
+                                                       <mat-label>Email*</mat-label>
+                                                       <input matInput placeholder="abc@gmail.com"
+                                                            formControlName="Email" id="EMAIL" type="email">
+                                                  </mat-form-field>
+                                                  <app-control-message [control] = "formValue.get('Email')"class="text-danger"></app-control-message>
+
+                                             </div>
+                                        </td>
+
+                                        <td>
+                                             <div class="mb-3">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
+                                                       <mat-label>fees*</mat-label>
+                                                       <input matInput placeholder="Enter Amount" formControlName="Fees"
+                                                            id="FEES">
+                                                  </mat-form-field>
+                                                  <app-control-message [control] = "formValue.get('Fees')"class="text-danger"></app-control-message>
+                                             </div>
+                                        </td>
+                                   </tr>
+                              </table>
+
+                              <table class="example-full-width" cellspacing="0">
+                                   <tr>
+                                        <td>
+                                             <div class="mb-3">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
+                                                       <mat-label>Address</mat-label>
+                                                       <textarea matInput placeholder="Ex. 100 Main St"
+                                                            formControlName="Address"></textarea>
+                                                  </mat-form-field>
+                                             </div>
+                                        </td>
+                                        <td>
+                                             <div class="mb-3">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
+                                                       <mat-label>Mobile*</mat-label>
+                                                       <span matPrefix>+91 &nbsp;</span>
+                                                       <input type="tel" matInput placeholder="555-555-1234"
+                                                            formControlName="Mobile" id="MOB">
+                                                  </mat-form-field>
+                                                  <app-control-message [control] = "formValue.get('Mobile')"class="text-danger"></app-control-message>
+                                             </div>
+                                        </td>
+                                   </tr>
+                              </table>
+                         </form>
+                    </mat-card>
+                    <br>
+
+                    <button mat-raised-button (click)="PostStudentDetails()" *ngIf = "ShowAdd" [disabled]="!formValue.valid" color="primary"
+                         type="button" variant="contained">Add</button> &nbsp;
+                         <button mat-raised-button color="primary"
+                         type="button" variant="contained" data-bs-dismiss="modal" color="warn">Close</button> &nbsp;
+                    <button mat-raised-button (click)="updateStudentDetails()" *ngIf = "ShowUpdate"  color="primary"
+                         type="button" variant="contained">Update</button>
+
+               </div>
+          </div>
+     </div>

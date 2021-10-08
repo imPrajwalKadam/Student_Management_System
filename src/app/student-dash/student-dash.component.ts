@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import{StudentDashModel}from './studentdash.model';
 import { APIService } from '../Shared/api.service';
+import { ValidationService } from '../validation.service';
+
+
 @Component({
   selector: 'app-student-dash',
   templateUrl: './student-dash.component.html',
   styleUrls: ['./student-dash.component.css']
 })
-export class StudentDashComponent implements OnInit {
+export class StudentDashComponent {
   ShowAdd !: boolean;
   ShowUpdate !: boolean;
 
@@ -17,28 +19,37 @@ export class StudentDashComponent implements OnInit {
 
   studentAll:any;
 
-  constructor(private formBuilder:FormBuilder,private api : APIService) {
-
-   }
-
-  ngOnInit(): void {
+  constructor(private formBuilder:FormBuilder,private api : APIService) {   
     this.formValue = this.formBuilder.group({
-      firstName:[''],
-      lastName:[],
-      Email:[],
-      Mobile:[],
-      Fees:[],
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
+      Email:['',[Validators.required,ValidationService.emailValidator]],
+      Mobile:['',[Validators.required,ValidationService.PhoneValidation]],
+      Fees:['',Validators.required],
       Address:[],
     })
     this.getAllStudents()
+   }
+   ngOnInit(): void{
+    this.formValue = this.formBuilder.group({
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
+      Email:['',[Validators.required,ValidationService.emailValidator]],
+      Mobile:['',[Validators.required,ValidationService.PhoneValidation]],
+      Fees:['',Validators.required],
+      Address:[],
+    })
+    this.getAllStudents()
+   }
 
-  }
+ 
 
   ClickAddStudent()
   {
-    this.formValue.reset();
     this.ShowAdd=true;
     this.ShowUpdate=false;
+    this.formValue.reset();
+
   }
    PostStudentDetails()
    {
@@ -47,6 +58,7 @@ export class StudentDashComponent implements OnInit {
      this.StudentModelsobj.email = this.formValue.value.Email;
      this.StudentModelsobj.mobile = this.formValue.value.Mobile;
      this.StudentModelsobj.fees = this.formValue.value.Fees;
+
     // this.StudentModelsobj.address = this.formValue.value.Address;
 
   
@@ -54,7 +66,7 @@ export class StudentDashComponent implements OnInit {
 this.api.postStudent(this.StudentModelsobj).subscribe(res=>{
   console.log(res);
   alert("Student record added successfully");
-  this.formValue.reset();
+  //this.formValue.reset();
   this.getAllStudents();
 
 },
@@ -89,6 +101,8 @@ err=>{
      this.formValue.controls['Email'].setValue(data.email);
      this.formValue.controls['Mobile'].setValue(data.mobile);
      this.formValue.controls['Fees'].setValue(data.fees);
+
+
    }
    updateStudentDetails()
      {
@@ -97,6 +111,8 @@ err=>{
      this.StudentModelsobj.email = this.formValue.value.Email;
      this.StudentModelsobj.mobile = this.formValue.value.Mobile;
      this.StudentModelsobj.fees = this.formValue.value.Fees;
+     this.getAllStudents();
+
 
       this.api.updateStudent(this.StudentModelsobj,this.StudentModelsobj.ID).subscribe(res=>{
         alert("Record added successfully..");
