@@ -14,12 +14,19 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {HttpClientModule} from '@angular/common/http'
 import {MatIconModule} from '@angular/material/icon';
 import { ControlMessageComponent } from './control-message/control-message.component';
+import { HomeComponent } from './home/home.component';
+import { PageNoteFountComponent } from './page-note-fount/page-note-fount.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentDashComponent,
-    ControlMessageComponent
+    ControlMessageComponent,
+    HomeComponent,
+    PageNoteFountComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,8 @@ import { ControlMessageComponent } from './control-message/control-message.compo
     BrowserAnimationsModule,
     MatFormFieldModule,MatInputModule,MatButtonModule,MatCardModule,MatToolbarModule,MatTableModule,ReactiveFormsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

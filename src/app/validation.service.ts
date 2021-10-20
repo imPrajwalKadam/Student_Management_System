@@ -38,4 +38,15 @@ export class ValidationService {
       return { 'InvalidPhoneNumber' : true };
     }
   }
+
+  static NameValidation(uName:any)
+  {
+    if(uName.value.match(/^[A-Z][a-z0-9_-]{3,19}$/))
+    {
+      console.log("First Character is Valid")
+    }
+    else{
+      console.log("Not Valid");
+    }
+  }
 }

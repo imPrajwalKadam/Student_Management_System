@@ -6,6 +6,4 @@ export class StudentDashModel{
      mobile:any = '';
      fees:any = '';
      address:any = '';
-
-
 }
